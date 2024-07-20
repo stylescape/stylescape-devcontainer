@@ -1,4 +1,4 @@
-# Copyright Starling Associates BV. All rights reserved.
+# Copyright Scape Agency BV. All rights reserved.
 
 # Variables
 # =============================================================================
