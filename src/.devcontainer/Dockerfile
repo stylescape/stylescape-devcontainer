@@ -4,4 +4,4 @@
 # Base Image
 # =============================================================================
 
-FROM scapeagency/swing-devcontainer:latest
+FROM stylescape/stylescape-devcontainer:latest
