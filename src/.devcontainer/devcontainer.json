@@ -1,11 +1,43 @@
 {
-    "name": "latex-env",
-    "extensions": [
-		"james-yu.latex-workshop",
-		"mathematic.vscode-latex",
-		"bnavetta.zoterolatex",
-		"ms-python.python"
-	],
-    "dockerFile": "Dockerfile"
-
-} 
+	"name": "Node.js & Web Development Container",
+	"image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:0-18",
+	"features": {
+	  "ghcr.io/devcontainers/features/node:1": {
+		"version": "18"
+	  }
+	},
+	"customizations": {
+	  "vscode": {
+		"extensions": [
+		  "dbaeumer.vscode-eslint",
+		  "esbenp.prettier-vscode",
+		  "ms-vscode.vscode-typescript-next",
+		  "stylelint.vscode-stylelint",
+		  "streetsidesoftware.code-spell-checker",
+		  "redhat.vscode-yaml",
+		  "PKief.material-icon-theme",
+		  "syler.sass-indented",
+		  "vscode-icons-team.vscode-icons",
+		  "jinja.html-formatter",
+		  "ritwickdey.LiveServer",
+		  "gruntfuggly.todo-tree"
+		],
+		"settings": {
+		  "editor.formatOnSave": true,
+		  "files.associations": {
+			"*.jinja": "jinja"
+		  }
+		}
+	  }
+	},
+	"postCreateCommand": "npm install",
+	"remoteUser": "vscode",
+	"forwardPorts": [],
+	"mounts": [],
+	"remoteEnv": {
+	  "NODE_ENV": "development"
+	},
+	"containerEnv": {
+	  "NODE_ENV": "development"
+	}
+}
