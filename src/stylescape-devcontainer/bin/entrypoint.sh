@@ -1,8 +1,9 @@
 #!/bin/bash
 
-
-echo Entering Entrypoint
-
+# =============================================================================
+# Logging
+# =============================================================================
+echo "Entering Entrypoint"
 
 # =============================================================================
 # Bash options
@@ -16,7 +17,30 @@ set -o pipefail
 set -o nounset
 
 # =============================================================================
-# Exec
+# Functions
 # =============================================================================
 
+# Function to handle errors
+error_exit() {
+    echo "Error on line $1"
+    exit 1
+}
+trap 'error_exit $LINENO' ERR
+
+# Function to check required environment variables
+check_env_vars() {
+    echo "Checking required environment variables..."
+    : "${NODE_ENV?Need to set NODE_ENV}"
+    echo "NODE_ENV is set to '$NODE_ENV'"
+}
+
+# =============================================================================
+# Main Entrypoint
+# =============================================================================
+
+# Check environment variables
+check_env_vars
+
+# Execute the main command passed as arguments to the script
+echo "Executing command: $*"
 exec "$@"
