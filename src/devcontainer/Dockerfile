@@ -64,9 +64,9 @@ RUN echo "Upgrading pip..." \
 # Node.js Application Dependencies
 # =============================================================================
 # Copy package.json and package-lock.json to the container and install dependencies
-COPY etc/package*.json ./
+# COPY etc/package*.json ./
 # RUN npm ci --frozen-lockfile
-RUN npm install
+# RUN npm install
 
 # Copy Application Code
 # =============================================================================
