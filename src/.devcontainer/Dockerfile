@@ -4,4 +4,4 @@
 # Base Image
 # =============================================================================
 
-FROM stylescape/stylescape-devcontainer:latest
+FROM ghcr.io/stylescape/stylescape-devcontainer/devcontainer:latest
