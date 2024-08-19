@@ -58,8 +58,6 @@ WORKDIR /workspace
 COPY etc/requirements.txt ./
 RUN echo "Upgrading pip..." \
     && pip3 install --no-cache-dir --upgrade pip \
-    && echo "Installing jinja2-cli..." \
-    && pip3 install --no-cache-dir jinja2-cli==0.8.3 \
     && echo "Installing Python dependencies from requirements.txt..." \
     && pip3 install --no-cache-dir -r requirements.txt
 
