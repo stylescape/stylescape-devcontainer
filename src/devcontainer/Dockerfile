@@ -55,9 +55,12 @@ WORKDIR /workspace
 # Python Dependencies
 # =============================================================================
 # Install Python dependencies specified in requirements.txt and Jinja2 CLI
-COPY /etc/requirements.txt ./
-RUN pip3 install --no-cache-dir --upgrade pip \
+COPY etc/requirements.txt ./
+RUN echo "Upgrading pip..." \
+    && pip3 install --no-cache-dir --upgrade pip \
+    && echo "Installing jinja2-cli..." \
     && pip3 install --no-cache-dir jinja2-cli==0.8.3 \
+    && echo "Installing Python dependencies from requirements.txt..." \
     && pip3 install --no-cache-dir -r requirements.txt
 
 # Node.js Application Dependencies
