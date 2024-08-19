@@ -3,6 +3,11 @@
 
 name: Docker Publish
 
+permissions:
+  actions: write
+  packages: write
+  deployments: write
+
 on:
   push:
     tags:
