@@ -103,4 +103,4 @@ ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
 # Start Command
 # =============================================================================
-CMD ["/usr/local/bin/start.sh"]
+# CMD ["/usr/local/bin/start.sh"]
