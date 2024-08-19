@@ -65,7 +65,7 @@ RUN echo "Upgrading pip..." \
 # =============================================================================
 # Copy package.json and package-lock.json to the container and install dependencies
 COPY package*.json ./
-RUN npm ci --frozen-lockfile
+RUN npm install
 
 # Copy Application Code
 # =============================================================================
@@ -74,8 +74,8 @@ COPY . .
 
 # Copy Entrypoint and Start Scripts
 # =============================================================================
-COPY /bin/entrypoint.sh /usr/local/bin/entrypoint.sh
-COPY /bin/start.sh /usr/local/bin/start.sh
+COPY bin/entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY bin/start.sh /usr/local/bin/start.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh /usr/local/bin/start.sh
 
 # Security Best Practices
