@@ -42,7 +42,7 @@ target "image" {
         // "${REGISTRY_ENDPOINT}/${IMAGE_NAME}:latest",
         "${REPOSITORY_ENDPOINT}/${IMAGE_NAME}:${VERSION}",
         "${REPOSITORY_ENDPOINT}/${IMAGE_NAME}:latest",
-        ]
+    ]
 }
 
 
