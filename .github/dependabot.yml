@@ -9,7 +9,7 @@
 # src/.devcontainer/ and src/devcontainer/) and Dev Containers
 # (.devcontainer/devcontainer.json and src/.devcontainer/devcontainer.json).
 # `.gitmodules` is empty, so no gitsubmodule entry. Updates target the
-# default branch (main).
+# dev branch (work lands on dev; main stays the default branch).
 #
 # Grouped so a week is a few PRs, not ten: minor and patch bumps land in one
 # PR per group; major bumps stay individual PRs.
@@ -24,6 +24,7 @@ updates:
 
   -
     package-ecosystem: "npm"
+    target-branch: "dev"
     directory: "/"
     schedule:
       interval: "weekly"
@@ -60,6 +61,7 @@ updates:
 
   -
     package-ecosystem: "github-actions"
+    target-branch: "dev"
     directory: "/"
     schedule:
       interval: "weekly"
@@ -84,6 +86,7 @@ updates:
 
   -
     package-ecosystem: "docker"
+    target-branch: "dev"
     directories:
       - "/.devcontainer"
       - "/src/.devcontainer"
@@ -106,6 +109,7 @@ updates:
 
   -
     package-ecosystem: "devcontainers"
+    target-branch: "dev"
     directories:
       - "/"
       - "/src"
