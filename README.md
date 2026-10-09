@@ -15,6 +15,49 @@
 
 This repository provides a development container configuration for working on the `Stylescape` project. The configuration is optimized for Node.js, TypeScript, SCSS, and Jinja2 templating, providing a comprehensive development environment using Visual Studio Code's Dev Containers.
 
+## Stylescape theme
+
+Beside the container, this repository is also a Stylescape theme:
+**`@stylescape/stylescape-devcontainer`**, the navy (`#041B26`) and white of
+the badges above as `--ss-*` token overrides for
+[Stylescape](https://github.com/stylescape/stylescape), a dark variant for a
+whole page or a single band, and Manrope, self-hosted.
+
+```sh
+npm install -D @stylescape/stylescape-devcontainer stylescape sass
+```
+
+```scss
+// core + the theme
+@use "pkg:@stylescape/stylescape-devcontainer";
+```
+
+```ts
+import "@stylescape/stylescape-devcontainer/font/fonts.css";
+```
+
+| Entry         | What it gives you                                      |
+| ------------- | ------------------------------------------------------ |
+| `.`           | core, the tokens, the dark/light stamps, heading voice |
+| `./tokens`    | the light token set at `:root`, no core                |
+| `./themes`    | `[data-theme="dark"]` and `[data-theme="light"]`       |
+| `./abstracts` | breakpoints, `fade()`, the `dark` mixin (no CSS)       |
+| `./base`      | heading/body/code/eyebrow mixins (no CSS)              |
+| `./font/*`    | `fonts.css` and Manrope                                |
+| `./css`       | the compiled `dist/css/ss.css` (after `npm run build`) |
+| `./stylelint` | a consumer stylelint config: no literal brand colours  |
+
+The theme lives in `src/scss/`, `src/font/` and `src/ts/`, beside — never
+inside — the image context in `src/devcontainer/`. Its documentation is in
+[`doc/`](doc/index.md); its history in [CHANGELOG.md](CHANGELOG.md).
+
+```sh
+npm install
+npm run build   # dist/css/ss.css, ss.min.css
+npm test        # token contract, WCAG AA, brand provenance, exports
+npm run check   # types, lint, formatting, tests
+```
+
 ## DevContainer Configuration
 
 The development container is configured with the following settings:
