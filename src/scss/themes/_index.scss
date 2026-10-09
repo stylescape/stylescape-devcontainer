@@ -1,0 +1,13 @@
+// =============================================================================
+// themes — [data-theme] variants
+//
+// The devContainer theme is LIGHT by default: the token set at bare `:root`
+// (from tokens/) is the badge's navy on white. `_dark.scss` applies the badge
+// itself — white on navy — wherever `data-theme="dark"` is stamped, on the
+// page or on a single band of it; `_light.scss` stamps the default back on a
+// band inside a dark page. Each stamp sets its tokens on the stamped element
+// itself, so the nearest stamp always wins, however they nest.
+// =============================================================================
+
+@forward "dark";
+@forward "light";

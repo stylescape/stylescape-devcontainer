@@ -1,0 +1,140 @@
+// =============================================================================
+// tokens/light — the light colour set, as a mixin
+//
+// Emits nothing on its own. `_css-vars.scss` includes it at bare `:root` (the
+// default) and `themes/_light.scss` includes it under `data-theme="light"`,
+// so a light band inside a dark page reads exactly the same values as the
+// page default — one list, two selectors, no drift.
+// =============================================================================
+
+@use "brand" as *;
+
+@mixin values {
+    // ------------------------------------------------------------------------
+    // Surface / Background
+    //
+    // White is the page, because white is half the badge. Paper (`ink-50`)
+    // is the alternate section ground; `surface` is white again so a panel
+    // on paper lifts and a panel on white is held by its line.
+    // ------------------------------------------------------------------------
+
+    --ss-color-background: #{$white};
+    --ss-color-foreground: #{$navy-900};
+
+    --ss-color-surface: #{$white};
+    --ss-color-surface-alt: #{$ink-50};
+    --ss-color-surface-muted: #{$ink-50};
+    --ss-color-surface-hover: #{$ink-150};
+    --ss-color-surface-primary: #{$white};
+
+    --ss-color-surface-1: #{$white};
+    --ss-color-surface-2: #{$ink-50};
+    --ss-color-surface-3: #{$ink-100};
+
+    --ss-color-fill: #{$ink-100};
+    --ss-color-fill-muted: #{$ink-50};
+
+    // White at 92%, so an overlay reads as a sheet laid over the page.
+    --ss-color-backdrop: rgb(255 255 255 / 0.92);
+
+    // ------------------------------------------------------------------------
+    // Text — the badge's navy, not #000
+    // ------------------------------------------------------------------------
+
+    --ss-color-text: #{$navy-900};
+    --ss-color-text-default: #{$navy-900};
+    --ss-color-text-primary: #{$navy-900};
+    --ss-color-text-secondary: #{$ink-600};
+    --ss-color-text-muted: #{$ink-500};
+    --ss-color-muted: #{$ink-100};
+    --ss-color-muted-foreground: #{$ink-500};
+
+    // ------------------------------------------------------------------------
+    // Lines / Borders
+    // ------------------------------------------------------------------------
+
+    --ss-color-line: #{$ink-200};
+    --ss-color-line-primary: #{$navy-900};
+    --ss-color-line-secondary: #{$ink-100};
+
+    --ss-color-border: #{$ink-200};
+    --ss-color-border-muted: #{$ink-100};
+    --ss-color-border-subtle: #{$ink-100};
+
+    // ------------------------------------------------------------------------
+    // Brand / Accent — the badge's navy; links a step lighter so a reader
+    // can tell them from the navy text around them
+    // ------------------------------------------------------------------------
+
+    --ss-color-primary: #{$navy-900};
+    --ss-color-secondary: #{$ink-600};
+
+    --ss-color-accent: #{$navy-900};
+    --ss-color-accent-bg: #{$navy-50};
+    --ss-color-accent-foreground: #{$white};
+    --ss-color-accent-highlight: #{$navy-500};
+    --ss-color-accent-tertiary: #{$navy-400};
+    --ss-color-on-accent: #{$white};
+
+    --ss-color-highlight: #{$navy-100};
+    --ss-color-highlight-foreground: #{$navy-900};
+
+    // ------------------------------------------------------------------------
+    // Links / States
+    // ------------------------------------------------------------------------
+
+    --ss-color-link: #{$navy-600};
+    --ss-color-link-hover: #{$navy-700};
+    --ss-color-link-active: #{$navy-900};
+    --ss-color-link-visited: #{$navy-600};
+
+    --ss-color-focus: #{$navy-600};
+    --ss-color-state-hover: #{$navy-700};
+    --ss-color-state-active: #{$navy-900};
+    --ss-color-state-link: #{$navy-600};
+
+    // ------------------------------------------------------------------------
+    // Status / Feedback — derived; see `_brand.scss`
+    // ------------------------------------------------------------------------
+
+    --ss-color-success: #{$green-deep};
+    --ss-color-success-bg: #{$green-wash};
+    --ss-color-success-soft: #{$white};
+    --ss-color-success-foreground: #{$green-deep};
+    --ss-color-on-success: #{$white};
+
+    --ss-color-warning: #{$amber-deep};
+    --ss-color-warning-bg: #{$amber-wash};
+    --ss-color-warning-soft: #{$white};
+    --ss-color-warning-foreground: #{$amber-deep};
+    --ss-color-on-warning: #{$white};
+
+    --ss-color-error: #{$red-deep};
+    --ss-color-error-bg: #{$red-wash};
+    --ss-color-error-soft: #{$white};
+    --ss-color-error-foreground: #{$red-deep};
+    --ss-color-on-error: #{$white};
+
+    --ss-color-info: #{$navy-600};
+    --ss-color-info-bg: #{$navy-50};
+    --ss-color-info-soft: #{$white};
+    --ss-color-info-foreground: #{$navy-600};
+    --ss-color-on-info: #{$white};
+
+    // ------------------------------------------------------------------------
+    // Code / Keyboard
+    // ------------------------------------------------------------------------
+
+    --ss-color-code-bg: #{$ink-100};
+    --ss-color-code-background: #{$ink-100};
+    --ss-color-code-foreground: #{$navy-900};
+    --ss-color-code-key: #{$navy-600};
+    --ss-color-kbd-bg: #{$ink-100};
+
+    // ------------------------------------------------------------------------
+    // Depth
+    // ------------------------------------------------------------------------
+
+    --ss-a-shadow-color: #{$shadow-color};
+    --ss-a-shadow-color-heavy: #{$shadow-color-heavy};
+}

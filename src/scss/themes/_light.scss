@@ -1,0 +1,15 @@
+// =============================================================================
+// themes/light — the default, stamped
+//
+// The same colour list as bare `:root` (`tokens/_light.scss`), under
+// `data-theme="light"`: for a light band inside a dark page, or a page that
+// wants `color-scheme: light` said out loud. Bare `:root` leaves
+// `color-scheme` alone on purpose; the stamp is where it is set.
+// =============================================================================
+
+@use "../tokens/light";
+
+[data-theme="light"] {
+    color-scheme: light;
+    @include light.values;
+}

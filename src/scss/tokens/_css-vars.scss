@@ -1,0 +1,110 @@
+// =============================================================================
+// tokens/css-vars — the devContainer theme's `--ss-*` overrides
+//
+// Emitted UNLAYERED at `:root`. When this file is loaded through the package
+// root (core first), core's own token defaults are also unlayered at `:root`,
+// so plain source order makes these values win; core's component rules
+// (inside `@layer ss.*`) read the tokens at runtime via `var(--ss-*)` and pick
+// the brand up automatically. Loaded through `./tokens` there is no core at
+// all and this block simply *is* the token set.
+//
+// THIS BLOCK IS THE LIGHT THEME, and the default: the badge's navy on white.
+// The colour list itself lives in `_light.scss` so `themes/_light.scss` can
+// stamp the same set on a band. `color-scheme` is deliberately NOT set here:
+// at bare `:root` it repaints every unstyled form control of a consumer that
+// never asked for it. It is set under the `data-theme` stamps only.
+//
+// Token names follow stylescape core's lexicon
+// (`12-lexicon/_color-tokens.scss`, `_radius.scss`, `_shadow.scss`,
+// `_typescale.scss`). Do not invent names here — if a token is missing, add
+// it to core first. Two deliberate exceptions: `--ss-font-family-heading`,
+// which core does not declare yet but tbgo, mesmera and this theme set, and
+// the `--devcontainer-*` block at the end, for the brand values core has no
+// name for.
+// =============================================================================
+
+@use "brand" as *;
+@use "light";
+
+:root {
+    @include light.values;
+
+    // ------------------------------------------------------------------------
+    // Shape — not themed; see `_brand.scss`
+    // ------------------------------------------------------------------------
+
+    --ss-radius-none: 0;
+    --ss-radius-xs: #{$radius-xs};
+    --ss-radius-sm: #{$radius-sm};
+    --ss-radius-default: #{$radius-md};
+    --ss-radius-md: #{$radius-md};
+    --ss-radius-lg: #{$radius-lg};
+    --ss-radius-xl: #{$radius-xl};
+    --ss-radius-2xl: #{$radius-2xl};
+    --ss-radius-3xl: #{$radius-3xl};
+    --ss-radius-full: #{$radius-full};
+
+    // ------------------------------------------------------------------------
+    // Legacy `--color_*` compatibility
+    //
+    // Core's `24-appearance/_relocated-surfaces.scss` still paints the page
+    // with `body { background: var(--color_fill_primary) }` and never
+    // declares the name. `var()` aliases, so they follow the dark theme by
+    // themselves. Delete once core declares (or drops) the legacy names.
+    // ------------------------------------------------------------------------
+
+    --color_background: var(--ss-color-background);
+    --color_background_secondary: var(--ss-color-surface);
+    --color_fill_primary: var(--ss-color-background);
+    --color_fill_secondary: var(--ss-color-surface);
+    --color_dark: var(--ss-color-surface-alt);
+
+    --color_text_primary: var(--ss-color-text-primary);
+    --color_text_secondary: var(--ss-color-text-secondary);
+
+    --color_accent_primary: var(--ss-color-accent);
+    --color_accent_secondary: var(--ss-color-accent-highlight);
+
+    --color_border: var(--ss-color-border);
+    --color_line_primary: var(--ss-color-line-primary);
+
+    --color_state_active: var(--ss-color-state-active);
+    --color_state_link: var(--ss-color-state-link);
+
+    // ------------------------------------------------------------------------
+    // Type — Manrope for both voices
+    // ------------------------------------------------------------------------
+
+    --ss-font-family-base: #{$font-sans};
+    --ss-font-family-sans: #{$font-sans};
+    --ss-font-family-heading: #{$font-heading};
+    --ss-font-family-display: #{$font-display};
+    --ss-font-family-mono: #{$font-mono};
+
+    --ss-font-weight-heading: #{$heading-weight};
+    --ss-tracking-heading: #{$heading-tracking};
+    --ss-leading-heading: #{$heading-leading};
+
+    // ------------------------------------------------------------------------
+    // The brand's own — `--devcontainer-*`, not `--ss-*`
+    //
+    // The badge navy, the white of its logo, and the one gradient the brand
+    // draws: navy from its lit end down to the badge itself. These are the
+    // same in both themes; a badge does not change colour when the page
+    // goes dark.
+    //
+    // The gradient carries white text (an announcement bar), so its lit end
+    // is `$navy-500`, the lightest step white still reads on at AA (4.7:1).
+    // `tst/theme.test.mjs` checks every stop.
+    // ------------------------------------------------------------------------
+
+    --devcontainer-navy: #{$navy-900};
+    --devcontainer-white: #{$white};
+    --devcontainer-paper: #{$ink-50};
+    --devcontainer-gradient: linear-gradient(
+        90deg,
+        #{$navy-500} 0%,
+        #{$navy-700} 55%,
+        #{$navy-900} 100%
+    );
+}

@@ -1,0 +1,161 @@
+// =============================================================================
+// tokens/brand — the Stylescape devContainer raw palette, faces and shapes
+//
+// This repository is a development container (Dockerfiles, a compose file
+// and a bake file under bin/, .devcontainer/ and src/devcontainer/) and had
+// no stylesheet, logo or palette of its own when it also became a theme.
+// What it does have is the badge row at the top of README.md, drawn in the
+// Stylescape organisation's colours: a deep navy, `#041B26`
+// (`labelColor=%23041B26&color=%23041B26`), carrying a white logo
+// (`logoColor=%23FFFFFF`). Those two are the brand, and every other swatch
+// here is DERIVED from them:
+//
+//   BRAND  a colour the README badges are drawn in, exactly as written there.
+//
+// An unmarked step was not on the badges. It extends a ramp around the navy
+// (hue 199) so the theme has washes, lines, links and a dark side that
+// belong to the badge rather than merely coexisting with it.
+// `tst/brand.test.mjs` fails if a BRAND swatch stops matching the README.
+//
+// These are the *raw* swatches. Do not use them directly in component code —
+// reference the semantic `--ss-*` custom properties emitted by
+// `tokens/_css-vars.scss`, or the `--devcontainer-*` ones beside them.
+//
+// Every variable is `!default`, so a consumer can retune the palette:
+//
+//     @use "pkg:@stylescape/stylescape-devcontainer/tokens" with (
+//         $navy-300: #9cc6d8
+//     );
+//
+// NOTE on contrast: every value that carries text is measured against the
+// grounds it actually lands on — page, surface and fill — and
+// `tst/theme.test.mjs` re-measures them on every run.
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// White — the badge's logo
+// -----------------------------------------------------------------------------
+
+$white: #ffffff !default; // BRAND — logoColor on every badge
+
+// -----------------------------------------------------------------------------
+// Navy — the badge
+// -----------------------------------------------------------------------------
+//
+// One hue, 199, the badge's own. The brand step sits at 900: it is nearly
+// black (17.5:1 on white), so it is the text colour as much as the accent.
+// The ramp therefore has room mostly upwards — the pale end for washes, the
+// middle for links a reader can tell from the text around them, and the
+// steps just above the brand for the dark theme's surfaces, which climb out
+// of the badge ground rather than sinking below it.
+
+$navy-50: #f0f6f9 !default; // the palest wash: a selected row on white
+$navy-100: #e1eef4 !default; // accent wash (light)
+$navy-200: #c4dde9 !default; // accent line and hover on the dark ground
+$navy-300: #90bfd5 !default; // accent (dark) — 8.9:1 on the badge ground
+$navy-400: #599fc0 !default; // accent tertiary; too light under white text
+$navy-500: #2e7b9e !default; // accent highlight, the gradient's lit end
+$navy-600: #1d5e7c !default; // links (light) — 7.1:1 on white
+$navy-700: #11465f !default; // link hover (light)
+$navy-750: #0b374c !default; // fill (dark)
+$navy-800: #082e40 !default; // the alternate section ground (dark)
+$navy-850: #05212e !default; // surface (dark)
+$navy-900: #041b26 !default; // BRAND — the badge: text, accent, dark ground
+$navy-950: #020d12 !default; // deeper than the badge: the backdrop (dark)
+
+// -----------------------------------------------------------------------------
+// Ink — the neutrals
+// -----------------------------------------------------------------------------
+//
+// Greys on the navy's hue at a fraction of its chroma: neutral to the eye,
+// never warmer than the badge. Body text is not set in these — text is the
+// navy itself — only the quieter voices and the lines.
+
+$ink-25: #fbfbfc !default; // the page's second white (light)
+$ink-50: #f4f5f6 !default; // paper: the alternate section ground (light)
+$ink-100: #ebeeef !default; // fill / chip (light)
+$ink-150: #e0e4e6 !default; // control hover (light)
+$ink-200: #ced6d9 !default; // borders (light); secondary text (dark)
+$ink-300: #b2bdc2 !default; // muted text (dark)
+$ink-400: #92a2aa !default; // disabled
+$ink-500: #55656d !default; // muted text (light) — 6.1:1 on white
+$ink-600: #414d53 !default; // secondary text (light)
+$ink-700: #2b3336 !default; // borders (dark)
+$ink-800: #1d2325 !default; // code (dark)
+$ink-900: #14181a !default; // kbd (dark)
+
+// -----------------------------------------------------------------------------
+// Status — derived, because the badges have none
+// -----------------------------------------------------------------------------
+//
+// A container still says "built" and "failed". These sit at a low chroma,
+// so a status never shouts louder than the navy around it. The `-deep` step
+// carries text on white, the `-lit` step on the dark ground.
+
+$green-deep: #2a6b4f !default;
+$green-lit: #86cbab !default;
+$amber-deep: #8a5a0c !default;
+$amber-lit: #e4b968 !default;
+$red-deep: #a53440 !default;
+$red-lit: #f0959c !default;
+$green-wash: #e4f1eb !default;
+$amber-wash: #f6edda !default;
+$red-wash: #f8e4e6 !default;
+
+// -----------------------------------------------------------------------------
+// Type
+// -----------------------------------------------------------------------------
+//
+// Manrope, the face Stylescape's own documentation is set in
+// (stylescape/doc/assets/style/extra.css). One face for both voices: the
+// body at its reading weight, the headings heavier and drawn in. It ships
+// with this package, variable on weight (`src/font/fonts.css`). The mono
+// stack matters more here than in most themes: a devcontainer's pages are
+// mostly commands.
+
+$font-sans:
+    "Manrope",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif !default;
+$font-heading: $font-sans !default;
+$font-display: $font-heading !default;
+$font-mono:
+    ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace !default;
+
+$heading-weight: 700 !default;
+$heading-tracking: -0.02em !default;
+$heading-leading: 1.15 !default;
+
+// -----------------------------------------------------------------------------
+// Shape
+// -----------------------------------------------------------------------------
+//
+// The badges are `style=flat-square`, so the corners are near-square: a few
+// pixels to take the edge off, never a pill — except where a pill is asked
+// for by name.
+
+$radius-xs: 2px !default;
+$radius-sm: 3px !default;
+$radius-md: 4px !default; // buttons, fields, chips
+$radius-lg: 6px !default; // media and tiles
+$radius-xl: 8px !default;
+$radius-2xl: 12px !default;
+$radius-3xl: 16px !default;
+$radius-full: 999px !default;
+
+// -----------------------------------------------------------------------------
+// Depth
+// -----------------------------------------------------------------------------
+//
+// The navy at a tenth on paper, so a lifted panel reads as lifted without a
+// grey smudge. On the dark ground, the deeper navy.
+
+$shadow-color: rgb(4 27 38 / 0.1) !default;
+$shadow-color-heavy: rgb(4 27 38 / 0.18) !default;
+$shadow-color-dark: rgb(2 13 18 / 0.5) !default;
+$shadow-color-dark-heavy: rgb(2 13 18 / 0.66) !default;

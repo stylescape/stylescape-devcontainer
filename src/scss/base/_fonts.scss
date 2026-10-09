@@ -1,0 +1,21 @@
+// =============================================================================
+// base/fonts — loading the face
+// =============================================================================
+//
+// Manrope ships with this package, self-hosted. Load `src/font/fonts.css`
+// once, as plain CSS so its `url()` resolves relative to the file in every
+// bundler:
+//
+//     import "@stylescape/stylescape-devcontainer/font/fonts.css";
+//
+// No Google Fonts route: a devcontainer's docs are often read offline, in
+// the container itself, and a font host is one more thing to be down.
+// =============================================================================
+
+/// The one file worth a `<link rel="preload">`. Path relative to `src/font/`.
+$preload: ("manrope/manrope-variable.woff2") !default;
+
+/// Numerals that line up in a column: a version in a table, a port number.
+@mixin tabular {
+    font-variant-numeric: tabular-nums;
+}
