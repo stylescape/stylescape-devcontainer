@@ -2,8 +2,9 @@
 // tokens/css-vars — the devContainer theme's `--ss-*` overrides
 //
 // Emitted UNLAYERED at `:root`. When this file is loaded through the package
-// root (core first), core's own token defaults are also unlayered at `:root`,
-// so plain source order makes these values win; core's component rules
+// root (core first), core's own colour token defaults sit in
+// `@layer ss.lexicon` (core 0.5), and unlayered declarations beat every
+// layer, so these values win; core's component rules
 // (inside `@layer ss.*`) read the tokens at runtime via `var(--ss-*)` and pick
 // the brand up automatically. Loaded through `./tokens` there is no core at
 // all and this block simply *is* the token set.

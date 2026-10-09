@@ -86,9 +86,41 @@ test("themes/ applies the dark set to ANY stamped element", () => {
     assert.equal(dark["--ss-color-text"], "#ffffff", "its white logo");
 
     // Not `:root[data-theme=dark]`: a <section data-theme="dark"> has to
-    // flip too. And no media query: the page is white whatever the OS says.
+    // flip too.
     assert.doesNotMatch(css, /:root\[data-theme/);
-    assert.doesNotMatch(css, /prefers-color-scheme/);
+});
+
+test("data-theme=auto takes the dark set only when the OS prefers dark", () => {
+    const css = compile("themes/_index.scss");
+    const dark = declarationsIn(css, DARK);
+    const auto = declarationsIn(css, '[data-theme="auto"]');
+    assert.deepEqual(auto, dark);
+
+    // The only media query wraps `auto`: an unstamped page stays white
+    // whatever the OS says.
+    const queries = [
+        ...css.matchAll(
+            /@media \(prefers-color-scheme: dark\)\s*\{([^{}]*)\{/g,
+        ),
+    ].map((m) => m[1].trim());
+    assert.deepEqual(queries, ['[data-theme="auto"]'.replace(/"/g, "")]);
+});
+
+test("input boundaries clear 3:1 on every ground (WCAG 1.4.11)", () => {
+    for (const t of [
+        declarationsIn(compile("tokens/_index.scss"), ":root"),
+        declarationsIn(compile("themes/_index.scss"), DARK),
+    ]) {
+        const edge = t["--ss-color-border-strong"];
+        assert.ok(edge, "--ss-color-border-strong is not set");
+        for (const ground of GROUNDS) {
+            const ratio = contrast(edge, t[ground]);
+            assert.ok(
+                ratio >= 3,
+                `${edge} is ${ratio.toFixed(2)}:1 on ${ground} (${t[ground]})`,
+            );
+        }
+    }
 });
 
 test("the light stamp is the :root set, plus color-scheme", () => {

@@ -8,8 +8,9 @@
 // and follows; the package root gives the stamped element its own ground and
 // text colour so the band paints without the consumer repeating it.
 //
-// No `prefers-color-scheme` block: the default page is white, and a consumer
-// that wants to follow the OS wires that preference to the stamp.
+// Two ways in, as in core 0.5: `data-theme="dark"` forces the dark set, and
+// `data-theme="auto"` follows `prefers-color-scheme`. Without the attribute
+// the page stays white even on a dark OS.
 //
 // The derivation: the ground is the badge, `$navy-900`; surfaces climb UP
 // from it through `$navy-850`/`-800`/`-750`, and the accent moves from the
@@ -61,6 +62,7 @@
     --ss-color-border: #{$ink-700};
     --ss-color-border-muted: #{$navy-800};
     --ss-color-border-subtle: #{$navy-800};
+    --ss-color-border-strong: #{$ink-400};
 
     // --- Brand / Accent ------------------------------------------------------
 
@@ -132,4 +134,12 @@
 // Any element, <html> included: a page or a band.
 [data-theme="dark"] {
     @include values;
+}
+
+// `auto` follows the OS. Unlayered, like the rest of the theme, so it beats
+// core's own `auto` block in `@layer ss.overrides`.
+@media (prefers-color-scheme: dark) {
+    [data-theme="auto"] {
+        @include values;
+    }
 }

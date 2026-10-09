@@ -15,12 +15,21 @@
 //
 // The selector becomes `[data-theme="dark"] .scrim, .scrim[data-theme="dark"]`
 // — inside a dark band or on one — and always more specific than the rule
-// around it. Use it inside a rule; at the top level there is no `&`.
+// around it; the same pair for `data-theme="auto"` applies under
+// `prefers-color-scheme: dark`, as the dark tokens do. Use it inside a rule;
+// at the top level there is no `&`.
 // =============================================================================
 
 @mixin dark {
     [data-theme="dark"] &,
     &[data-theme="dark"] {
         @content;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        [data-theme="auto"] &,
+        &[data-theme="auto"] {
+            @content;
+        }
     }
 }

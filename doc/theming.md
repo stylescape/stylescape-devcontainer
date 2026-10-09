@@ -18,8 +18,9 @@ control of a consumer that never asked for it.
 `[data-theme="dark"]` is the badge itself: white on `#041b26`. It applies to
 any element, so a single band of a light page can be dark; the package root
 gives a stamped element (other than `<html>`) its own ground and text
-colour. There is no `prefers-color-scheme` block — wire the OS preference to
-the stamp yourself if you want it.
+colour. `[data-theme="auto"]` takes the same dark set when the OS prefers
+dark, as in stylescape core 0.5; without any attribute the page stays white
+whatever the OS says.
 
 ## A light band in a dark page
 

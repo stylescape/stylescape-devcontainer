@@ -8,12 +8,14 @@
 //
 //   1. core   — the full stylescape framework. Its component/utility rules
 //               live inside `@layer ss.*` cascade layers and consume runtime
-//               `var(--ss-*)` tokens; its token defaults are emitted
-//               UNLAYERED at `:root`.
-//   2. tokens — the badge navy on white, also UNLAYERED at `:root` but AFTER
-//               core, so source order makes them win over core's defaults
+//               `var(--ss-*)` tokens; since core 0.5 its colour token
+//               defaults sit in `@layer ss.lexicon`.
+//   2. tokens — the badge navy on white, UNLAYERED at `:root` and AFTER
+//               core, so they win over core's defaults, layered or not,
 //               while every `ss.*` rule keeps reading them at runtime.
-//   3. themes — the dark (and stamped light) variants, under `data-theme`.
+//   3. themes — the dark (and stamped light) variants, under `data-theme`;
+//               `data-theme="auto"` takes the dark set when the OS prefers
+//               dark, as core 0.5 does.
 //   4. voices — the heading voice on h1-h6, and a ground for a stamped band.
 //
 // A site that wants only the tokens and none of core takes `./tokens` and
@@ -28,11 +30,16 @@
 @use "base/typography";
 
 // Without the scapepress parity layer: it re-emits old sites' CSS under
-// `.ss-c-*` names in `@layer ss.utilities`, which outranks the real modules
-// in `ss.components`. No consumer of this theme uses a scapepress class.
+// `.ss-c-*` names, and no consumer of this theme uses a scapepress class.
 // Same decision, same reason, as stylescape-tbgo and stylescape-mesmera.
+//
+// Without core 0.5's 0.3 class-name compatibility layer either: it styles
+// the unprefixed 0.3 names (`.button`, `.card`, `.badge`, …) in
+// `@layer ss.compat`, which core 0.4 never did. This theme's markup is
+// `ss-*` only, and a consumer's own `.card` must not pick up core's look.
 @use "pkg:stylescape/scss" as core with (
-    $scapepress-parity: false
+    $scapepress-parity: false,
+    $v03-compat: false
 );
 
 @forward "tokens";
@@ -48,7 +55,10 @@
 
 // A band stamped with a theme paints its own ground and text. On <html> that
 // is core's body rule doing it already; on a <section> nothing else would.
-:is([data-theme="dark"], [data-theme="light"]):not(:root) {
+// `auto` is core 0.5's third entry point: dark when the OS prefers it.
+:is([data-theme="dark"], [data-theme="light"], [data-theme="auto"]):not(
+    :root
+) {
     background-color: var(--ss-color-background);
     color: var(--ss-color-text);
 }

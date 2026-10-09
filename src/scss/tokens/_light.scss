@@ -61,6 +61,11 @@
     --ss-color-border-muted: #{$ink-100};
     --ss-color-border-subtle: #{$ink-100};
 
+    // Core 0.5's boundary for inputs, checkboxes, radios and toggle tracks
+    // (WCAG 1.4.11, >= 3:1). Core's default is a neutral grey; the ramp's
+    // `ink-500` is the brand's own step, 6.1:1 on white.
+    --ss-color-border-strong: #{$ink-500};
+
     // ------------------------------------------------------------------------
     // Brand / Accent — the badge's navy; links a step lighter so a reader
     // can tell them from the navy text around them

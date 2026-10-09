@@ -23,7 +23,22 @@ bake/compose files in `bin/`.
 - **A dark theme** (`themes/_dark.scss`) under `[data-theme="dark"]` on any
   element — white on the badge navy — and a light stamp
   (`themes/_light.scss`) for a light band inside a dark page.
-  `color-scheme` is set under the stamps only, never at bare `:root`.
+  `[data-theme="auto"]` takes the dark set under
+  `prefers-color-scheme: dark` (core 0.5's theme entry points); the band
+  ground rule and the `dark` mixin cover it too. `color-scheme` is set
+  under the stamps only, never at bare `:root`.
+- **Built on stylescape core 0.5.1** (devDependency `^0.5.1`, peer range
+  `stylescape >=0.5.1`). The package root builds core with
+  `$scapepress-parity: false` and `$v03-compat: false` (0.5's styling of
+  the unprefixed 0.3 class names, which 0.4 never had). Every `--ss-*` and
+  `--devcontainer-*` value equals what the theme rendered on core 0.4.1:
+  the theme already set every colour core 0.5 re-tuned (status hues,
+  muted, line-secondary), and `tst/fixtures/tokens-0.1.0.json` pins both
+  themes. Core 0.5's new `--ss-color-border-strong` (input boundaries,
+  WCAG 1.4.11) comes from the ink ramp: `ink-500` light, `ink-400` dark,
+  tested at 3:1 or more on every ground. Core 0.5's own readability
+  defaults (body line-height 1.5, paragraph spacing) are left as core sets
+  them.
 - **Manrope**, self-hosted in `src/font/` (`fonts.css`, the variable woff2
   from Stylescape's own docs, OFL). The package root sets h1-h6 in the
   heading voice at zero specificity.
