@@ -1,0 +1,20 @@
+dist/
+node_modules/
+coverage/
+package-lock.json
+res/
+
+# The devcontainer itself, and the files that predate the theme: they keep
+# the formatting they were written in, and formatting them here would only
+# make a diff in files the theme did not change.
+.devcontainer/
+src/.devcontainer/
+src/devcontainer/
+bin/
+docs/
+.vscode/
+.github/
+.pre-commit-config.yaml
+README.md
+CITATION.cff
+CONTRIBITORS.md

@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 title: Scape Agency - Docker Images - Stylescape devContainer
-version: 0.0.1
-date-released: 2024-07-01
+version: 0.1.0
+date-released: 2026-10-09
 url: "https://github.com/scape-agency/docker-stylescape-devcontainer"
 message: >-
   If you use this software, please cite it using

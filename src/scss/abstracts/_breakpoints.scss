@@ -1,0 +1,40 @@
+// =============================================================================
+// abstracts/breakpoints — two boundaries, and the two preferences
+// =============================================================================
+//
+// `narrow` is a phone: one column, the navigation behind a button. `wide`
+// is a desktop that can hold a headline beside its text. Between them a
+// layout should still work without either mixin, which is why there are
+// two boundaries and not five.
+// =============================================================================
+
+$narrow: 720px !default;
+$wide: 1080px !default;
+
+@mixin narrow {
+    @media (max-width: $narrow) {
+        @content;
+    }
+}
+
+@mixin wide {
+    @media (min-width: $wide) {
+        @content;
+    }
+}
+
+/// Whoever would rather not see moving pictures does not get them.
+@mixin reduced-motion {
+    @media (prefers-reduced-motion: reduce) {
+        @content;
+    }
+}
+
+/// A pointer that can hover: hover effects only where they can be seen.
+@mixin hover {
+    @media (hover: hover) {
+        &:hover {
+            @content;
+        }
+    }
+}

@@ -1,0 +1,50 @@
+// =============================================================================
+// base/typography — the two voices
+// =============================================================================
+//
+// One face, Manrope, in two voices: the heading heavier and drawn in, the
+// body at its reading weight. These mixins carry the whole setting — face,
+// weight, track, leading — so a consumer's `.headline` and core's `h2` cannot
+// drift. Commands and paths get the mono stack through `code`.
+//
+// Mixins only: nothing here emits a rule until a consumer includes one. The
+// package root applies `heading` to h1-h6 at zero specificity; see
+// `index.scss`.
+// =============================================================================
+
+/// A heading at any size: Manrope, bold, drawn in.
+@mixin heading {
+    font-family: var(--ss-font-family-heading);
+    font-weight: var(--ss-font-weight-heading);
+    letter-spacing: var(--ss-tracking-heading);
+    line-height: var(--ss-leading-heading);
+    text-wrap: balance;
+}
+
+/// Running text: Manrope at its reading weight, with room between lines.
+@mixin body {
+    font-family: var(--ss-font-family-base);
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0;
+}
+
+/// A command, a path, an image tag: the mono stack, on the code ground.
+@mixin code {
+    font-family: var(--ss-font-family-mono);
+    font-size: 0.9em;
+    color: var(--ss-color-code-foreground);
+    background-color: var(--ss-color-code-bg);
+    border-radius: var(--ss-radius-sm);
+}
+
+/// The small label above a heading or a column of links: quiet, not shouted.
+@mixin eyebrow {
+    font-family: var(--ss-font-family-base);
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ss-color-text-muted);
+}

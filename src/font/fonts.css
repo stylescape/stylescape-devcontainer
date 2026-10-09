@@ -1,0 +1,25 @@
+/* =============================================================================
+   font/fonts.css -- the face the devContainer theme ships, self-hosted
+   =============================================================================
+
+   Manrope, variable on weight (200-800), so one file covers every step the
+   theme sets: the body at 400, the headings at 700. It is the face
+   Stylescape's own documentation is set in; the woff2 is the variable cut
+   from stylescape/doc/assets/font/manrope/, unchanged and not subset.
+
+   Manrope is SIL OFL 1.1; its licence sits beside the file.
+
+   Load it once, beside the stylesheet -- it is plain CSS so the url()
+   resolves relative to this file in every bundler:
+
+       import "@stylescape/stylescape-devcontainer/font/fonts.css";
+   ============================================================================= */
+
+/* manrope-wght-normal -- one file, the whole character set */
+@font-face {
+    font-family: "Manrope";
+    font-style: normal;
+    font-display: swap;
+    font-weight: 200 800;
+    src: url("./manrope/manrope-variable.woff2") format("woff2");
+}

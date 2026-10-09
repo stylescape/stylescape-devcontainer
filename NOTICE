@@ -1,0 +1,24 @@
+stylescape-devcontainer
+Copyright (c) 2024-2026 Scape Agency. MIT licence; see LICENSE.
+
+This package contains or refers to the following third-party material.
+
+-------------------------------------------------------------------------------
+Manrope
+-------------------------------------------------------------------------------
+
+Copyright 2019-2021 The Manrope Project Authors
+(https://github.com/sharanda/manrope).
+Licensed under the SIL Open Font License, Version 1.1. The variable woff2
+under src/font/manrope/ is copied unchanged from
+stylescape/doc/assets/font/manrope/; the licence text is
+src/font/manrope/OFL.txt.
+
+-------------------------------------------------------------------------------
+Stylescape
+-------------------------------------------------------------------------------
+
+The package root compiles against stylescape core (the `stylescape` npm
+package, MIT licence), an optional peer dependency that is not bundled in
+the source entries. The compiled dist/css/ss.css contains core's output;
+its licence travels with that package.

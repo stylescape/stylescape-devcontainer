@@ -1,0 +1,145 @@
+// =============================================================================
+// themes/dark — the badge itself
+//
+// White on the navy ground, exactly as every README badge is drawn. It
+// applies wherever `data-theme="dark"` is stamped — on <html> for a whole
+// page, or on ONE ELEMENT for a dark band inside a light page. Custom
+// properties inherit, so everything inside that element re-reads the tokens
+// and follows; the package root gives the stamped element its own ground and
+// text colour so the band paints without the consumer repeating it.
+//
+// Two ways in, as in core 0.5: `data-theme="dark"` forces the dark set, and
+// `data-theme="auto"` follows `prefers-color-scheme`. Without the attribute
+// the page stays white even on a dark OS.
+//
+// The derivation: the ground is the badge, `$navy-900`; surfaces climb UP
+// from it through `$navy-850`/`-800`/`-750`, and the accent moves from the
+// badge (1:1 on this ground) to `$navy-300`, the step that carries text here.
+// Shape and type do not change — they are not themed.
+// =============================================================================
+
+@use "../tokens/brand" as *;
+
+@mixin values {
+    color-scheme: dark;
+
+    // --- Surface / Background ------------------------------------------------
+
+    --ss-color-background: #{$navy-900};
+    --ss-color-foreground: #{$white};
+
+    --ss-color-surface: #{$navy-850};
+    --ss-color-surface-alt: #{$navy-800};
+    --ss-color-surface-muted: #{$navy-850};
+    --ss-color-surface-hover: #{$navy-750};
+    --ss-color-surface-primary: #{$navy-900};
+
+    --ss-color-surface-1: #{$navy-850};
+    --ss-color-surface-2: #{$navy-800};
+    --ss-color-surface-3: #{$navy-750};
+
+    --ss-color-fill: #{$navy-750};
+    --ss-color-fill-muted: #{$navy-850};
+
+    --ss-color-backdrop: rgb(2 13 18 / 0.88);
+
+    // --- Text ----------------------------------------------------------------
+
+    --ss-color-text: #{$white};
+    --ss-color-text-default: #{$white};
+    --ss-color-text-primary: #{$white};
+    --ss-color-text-secondary: #{$ink-200};
+    --ss-color-text-muted: #{$ink-300};
+    --ss-color-muted: #{$navy-750};
+    --ss-color-muted-foreground: #{$ink-300};
+
+    // --- Lines / Borders -----------------------------------------------------
+
+    --ss-color-line: #{$ink-700};
+    --ss-color-line-primary: #{$navy-200};
+    --ss-color-line-secondary: #{$navy-800};
+
+    --ss-color-border: #{$ink-700};
+    --ss-color-border-muted: #{$navy-800};
+    --ss-color-border-subtle: #{$navy-800};
+    --ss-color-border-strong: #{$ink-400};
+
+    // --- Brand / Accent ------------------------------------------------------
+
+    --ss-color-primary: #{$navy-300};
+    --ss-color-secondary: #{$ink-200};
+
+    --ss-color-accent: #{$navy-300};
+    --ss-color-accent-bg: #{$navy-800};
+    --ss-color-accent-foreground: #{$navy-900};
+    --ss-color-accent-highlight: #{$navy-200};
+    --ss-color-accent-tertiary: #{$navy-400};
+    --ss-color-on-accent: #{$navy-900};
+
+    --ss-color-highlight: #{$navy-800};
+    --ss-color-highlight-foreground: #{$white};
+
+    // --- Links / States ------------------------------------------------------
+
+    --ss-color-link: #{$navy-300};
+    --ss-color-link-hover: #{$navy-200};
+    --ss-color-link-active: #{$navy-200};
+    --ss-color-link-visited: #{$navy-300};
+
+    --ss-color-focus: #{$navy-300};
+    --ss-color-state-hover: #{$navy-200};
+    --ss-color-state-active: #{$navy-200};
+    --ss-color-state-link: #{$navy-300};
+
+    // --- Status / Feedback ---------------------------------------------------
+
+    --ss-color-success: #{$green-lit};
+    --ss-color-success-bg: #{$navy-850};
+    --ss-color-success-soft: #{$navy-850};
+    --ss-color-success-foreground: #{$green-lit};
+    --ss-color-on-success: #{$navy-900};
+
+    --ss-color-warning: #{$amber-lit};
+    --ss-color-warning-bg: #{$navy-850};
+    --ss-color-warning-soft: #{$navy-850};
+    --ss-color-warning-foreground: #{$amber-lit};
+    --ss-color-on-warning: #{$navy-900};
+
+    --ss-color-error: #{$red-lit};
+    --ss-color-error-bg: #{$navy-850};
+    --ss-color-error-soft: #{$navy-850};
+    --ss-color-error-foreground: #{$red-lit};
+    --ss-color-on-error: #{$navy-900};
+
+    --ss-color-info: #{$navy-300};
+    --ss-color-info-bg: #{$navy-850};
+    --ss-color-info-soft: #{$navy-850};
+    --ss-color-info-foreground: #{$navy-300};
+    --ss-color-on-info: #{$navy-900};
+
+    // --- Code / Keyboard -----------------------------------------------------
+
+    --ss-color-code-bg: #{$ink-800};
+    --ss-color-code-background: #{$ink-800};
+    --ss-color-code-foreground: #{$white};
+    --ss-color-code-key: #{$navy-300};
+    --ss-color-kbd-bg: #{$ink-900};
+
+    // --- Depth ---------------------------------------------------------------
+
+    --ss-a-shadow-color: #{$shadow-color-dark};
+    --ss-a-shadow-color-heavy: #{$shadow-color-dark-heavy};
+}
+
+// Any element, <html> included: a page or a band.
+[data-theme="dark"] {
+    @include values;
+}
+
+// `auto` follows the OS. Unlayered, like the rest of the theme, so it beats
+// core's own `auto` block in `@layer ss.overrides`.
+@media (prefers-color-scheme: dark) {
+    [data-theme="auto"] {
+        @include values;
+    }
+}
