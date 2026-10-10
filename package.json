@@ -1,6 +1,6 @@
 {
   "name": "@stylescape/stylescape-devcontainer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Stylescape devContainer — a development container for Stylescape work, and the Stylescape devContainer theme for the Stylescape design system: the navy and white of the Stylescape badges as --ss-* token overrides, a dark variant for whole pages or single bands, and Manrope, self-hosted.",
   "keywords": [
     "stylescape",

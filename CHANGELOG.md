@@ -4,6 +4,32 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.1] — 2026-10-10
+
+The first tagged release of the Stylescape devContainer theme: 0.1.0 (the
+Stylescape theme layout on stylescape core 0.5.1, with every npm dependency
+at its latest) plus the repository work since. Every `--ss-*` and
+`--devcontainer-*` value is unchanged.
+
+### Added
+
+- **Storybook** (`npm run storybook`, `npm run build-storybook`): the shared
+  web-components + Vite setup of the stylescape-* themes, in `.storybook/`
+  with the theme stories in `src/stories/theme.stories.ts`, and the
+  Storybook addons as devDependencies.
+
+### Changed
+
+- **Grouped Dependabot config** targeting `dev`: npm, github-actions,
+  docker and devcontainers only; stylescape, dev-tooling and production
+  minor/patch updates grouped, majors as single PRs.
+- `VERSION`, `CITATION.cff` and `codemeta.json` move to 0.1.1.
+
+### Fixed
+
+- Storybook build warnings: the obsolete `mixed-decls` deprecation silence
+  and the `src/**/*.mdx` stories glob that matched no files.
+
 ## [0.1.0] — 2026-10-09
 
 The repository becomes a Stylescape theme as well as a devcontainer, in the
