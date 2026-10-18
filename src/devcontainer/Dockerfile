@@ -3,7 +3,7 @@
 # Base Image
 # =============================================================================
 # Use the official Ubuntu base image for maximum control over dependencies
-FROM ubuntu:22.04 AS base
+FROM ubuntu:25.10 AS base
 
 # Environment Variables
 # =============================================================================
