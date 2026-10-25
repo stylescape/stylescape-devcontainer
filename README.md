@@ -12,7 +12,6 @@
 <h1 align="center" style='border-bottom: none;'>Stylescape devContainer</h1>
 <!-- <h3 align="center">Dynamic Layout Engine</h3> -->
 
-
 This repository provides a development container configuration for working on the `Stylescape` project. The configuration is optimized for Node.js, TypeScript, SCSS, and Jinja2 templating, providing a comprehensive development environment using Visual Studio Code's Dev Containers.
 
 ## Stylescape theme

@@ -24,7 +24,7 @@ corners are near-square because the badges are `style=flat-square`.
 
 ## Layout
 
-```
+```text
 src/scss/index.scss     core + tokens + themes + the heading voice
 src/scss/abstracts/     breakpoints, fade(), the dark mixin — no CSS
 src/scss/tokens/        _brand (raw values), _light (the set), _css-vars

@@ -31,7 +31,7 @@ trap 'error_exit $LINENO' ERR
 check_env_vars() {
     echo "Checking required environment variables..."
     : "${NODE_ENV?Need to set NODE_ENV}"
-    echo "NODE_ENV is set to '$NODE_ENV'"
+    echo "NODE_ENV is set to '${NODE_ENV}'"
 }
 
 # =============================================================================

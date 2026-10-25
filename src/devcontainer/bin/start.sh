@@ -27,19 +27,19 @@ wait_for_service() {
     local max_retries=10
     local sleep_seconds=5
     
-    echo "Waiting for service at $service_url to be available..."
+    echo "Waiting for service at ${service_url} to be available..."
 
-    until curl --output /dev/null --silent --head --fail "$service_url"; do
+    until curl --output /dev/null --silent --head --fail "${service_url}"; do
         retry_count=$((retry_count + 1))
-        if [ $retry_count -ge $max_retries ]; then
-            echo "Service at $service_url is not available after $max_retries attempts. Exiting."
+        if [[ "${retry_count}" -ge "${max_retries}" ]]; then
+            echo "Service at ${service_url} is not available after ${max_retries} attempts. Exiting."
             exit 1
         fi
-        echo "Service not available yet. Retrying in $sleep_seconds seconds..."
-        sleep $sleep_seconds
+        echo "Service not available yet. Retrying in ${sleep_seconds} seconds..."
+        sleep "${sleep_seconds}"
     done
 
-    echo "Service at $service_url is available!"
+    echo "Service at ${service_url} is available!"
 }
 
 # =============================================================================
@@ -57,5 +57,6 @@ wait_for_service() {
 # Start Application
 # =============================================================================
 
-echo "Starting application with NODE_ENV=$NODE_ENV"
+# shellcheck disable=SC2154 # NODE_ENV is set by the container environment
+echo "Starting application with NODE_ENV=${NODE_ENV}"
 npm start
