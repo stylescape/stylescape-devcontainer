@@ -126,7 +126,7 @@
     "eslint-config-prettier": "^10.1.8",
     "globals": "^17.14.0",
     "lit": "^3.3.3",
-    "prettier": "^3.10.0",
+    "prettier": "^3.10.1",
     "sass": "^1.108.2",
     "storybook": "^10.6.1",
     "stylescape": "^0.5.5",
